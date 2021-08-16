@@ -1,0 +1,15 @@
+name: simple_xgboost_example
+
+conda_env: conda.yaml
+
+entry_points:
+    train:
+        parameters:
+            learning_rate: {type: float, default: 0.3}
+            colsample_bytree: {type: float, default: 1.0}
+            subsample: {type: float, default: 1.0}
+        command:
+            "python train.py --learning-rate={learning_rate} --colsample-bytree={colsample_bytree} --subsample={subsample}"
+    hyper_parameter_search:
+        command:
+            "python hparams_search.py"
