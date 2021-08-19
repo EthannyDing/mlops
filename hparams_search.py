@@ -81,6 +81,9 @@ def main():
     y = iris.target
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+    # set tracking uri as local DB.
+    # mlflow.set_tracking_uri("postgresql://postgres:knowtions12345@localhost:5432/models")
+
     # enable auto logging
     mlflow.xgboost.autolog()
 
