@@ -1,4 +1,4 @@
-# simple xgboost example
+# mlops
 This repo shows a simple example of using MLflow to track model training, reproduce results and model versioning
 
 ## Installation
