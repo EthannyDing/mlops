@@ -22,5 +22,14 @@ You can create a backend database store either in local database or remote ones.
 You can either create a Postgres Database programmatically or in the Postico UI. Hence DB URI:
 `postgresql://postgres:knowtions12345@localhost:5432/models`
 
+### 2. Check MLflow Tracking Server
+
+
+### 3. Try Hyperparameter Tuning
+
+
+### 4. Register Trained Models
+
+
 
 To be continued
