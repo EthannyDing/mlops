@@ -13,6 +13,11 @@ import mlflow.xgboost
 mpl.use("Agg")
 
 
+hq_postgres_uri = 'postgresql://knowtions:verystrongwarehousepass@192.168.10.11:5432/models'
+local_postgres_uri = 'postgresql://postgres:knowtions12345@localhost:5432/models'
+s3_bucket = "s3://mlops-buckets/mlartifacts"  # replace this value
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="XGBoost example")
     parser.add_argument(
@@ -47,7 +52,10 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # set tracking uri as local DB.
-    # mlflow.set_tracking_uri("postgresql://postgres:knowtions12345@localhost:5432/models")
+    expr_name = "test_add_artifacts_and_entities"  # create a new experiment (do not replace)
+    mlflow.set_tracking_uri(hq_postgres_uri)
+    mlflow.create_experiment(expr_name, s3_bucket)
+    mlflow.set_experiment(expr_name)
 
     # enable auto logging
     mlflow.xgboost.autolog()
@@ -56,7 +64,8 @@ def main():
     dtest = xgb.DMatrix(X_test, label=y_test)
 
     with mlflow.start_run() as run:
-
+        
+        print("Artifact storage uri: {}".format(mlflow.get_artifact_uri()))
         # train model
         params = {
             "objective": "multi:softprob",
