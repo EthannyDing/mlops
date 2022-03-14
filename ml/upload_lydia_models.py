@@ -112,8 +112,8 @@ def collect_v3_1_models():
 
 
 def main():
-    expr_name = 'register v3_1 models'
-    mlflow.set_tracking_uri(local_postgres_uri)
+    expr_name = 'register v3_1 models re'
+    mlflow.set_tracking_uri(hq_postgres_uri)
     mlflow.create_experiment(expr_name, s3_bucket)
     mlflow.set_experiment(expr_name)
 

@@ -2,3 +2,4 @@ mlflow
 scikit-learn
 matplotlib
 xgboost
+psycopg2-binary
